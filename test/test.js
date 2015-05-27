@@ -5,8 +5,6 @@ import sinon from 'sinon';
 
 let log = console.log.bind(console);
 
-let id = Object;
-
 let delay = function(val, wait){
     return new Promise((resolve) => {
          setTimeout(() => resolve(val), wait);
@@ -18,11 +16,22 @@ describe('RemoteSwitch', () => {
     
     beforeEach(() => {rs = new RemoteSwitch;});
     
+    it('then passing arguments called with resolve/reject', (done) => {
+        
+        rs
+        .then((x)=>assert(x === 345))
+        .then(()=>123)
+        .then((x)=>assert(x === 123))
+        .then(()=>Promise.reject(789))
+        .catch((x)=>assert(x === 789))
+        .fire(345)
+        .then(done);
+    });
+    
     it('pushed tasks will never be executed while not fired', (done) => {
         let spy = sinon.spy();
         
         rs
-        .then(123)
         .then(spy)
         .then(assert(!spy.called))
         .then(()=>assert(spy.called))

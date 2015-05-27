@@ -28,23 +28,5 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {
-    "bluebird": "^2.9.26",
-    "del": "^1.2.0",
-    "babel": "^5.4.7",
-    "gulp": "^3.8.11",
-    "gulp-bump": "^0.3.1",
-    "gulp-git": "^1.2.4",
-    "gulp-shell": "^0.4.1",
-    "gulp-tag-version": "^1.2.1",
-    "power-assert": "^0.11.0",
-    "run-sequence": "^1.1.0",
-    "sinon": "^1.14.1",
-    "espower-babel": "^3.1.1",
-    "babel-plugin-espower": "^1.0.0",
-    "es6-promise": "^2.1.1",
-    "grunt": "^0.4.5",
-    "grunt-release": "^0.12.0"
-  },
   "description": ""
 }

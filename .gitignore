@@ -1,0 +1,4 @@
+.DS_Store
+test/espowered
+lib
+node_modules

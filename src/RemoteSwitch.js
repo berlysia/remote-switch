@@ -1,11 +1,12 @@
 export default class RemoteSwitch {
     constructor() {
-        this._resolve;
-        this._reject;
-        this.current = new Promise((resolve, reject) => {
-            this._resolve = resolve;
-            this._reject = reject;
+        this.resolve;
+        this.reject;
+        this.promise = new Promise((resolve, reject) => {
+            this.resolve = resolve;
+            this.reject = reject;
         });
+        this.current = this.promise;
     }
     
     then(onResolved, onRejected) {
@@ -21,25 +22,16 @@ export default class RemoteSwitch {
         return this.then(undefined, onRejected);
     }
     
-    resolve(...args) {
-        this._resolve(...args);
+    fire(arg) {
+        this.resolve(arg);
         return this;
     }
-    
-    fire(...args) {
-        return this.resolve(...args);
+        
+    static resolve(arg) {
+        return new RemoteSwitch.resolve(arg);
     }
     
-    reject(...args) {
-        this._reject(...args);
-        return this;
-    }
-    
-    static resolve(...args) {
-        return new RemoteSwitch.resolve(...args);
-    }
-    
-    static reject(...args) {
-        return new RemoteSwitch.reject(...args);
+    static reject(arg) {
+        return new RemoteSwitch.reject(arg);
     }
 }

@@ -14,10 +14,6 @@ export default class RemoteSwitch {
         return this;
     }
     
-    done(onResolved) {
-        return this.then(onResolved, undefined);
-    }
-    
     catch(onRejected) {
         return this.then(undefined, onRejected);
     }
@@ -28,10 +24,14 @@ export default class RemoteSwitch {
     }
         
     static resolve(arg) {
-        return new RemoteSwitch.resolve(arg);
+        const ret = new RemoteSwitch();
+        ret.resolve(arg)
+        return ret;
     }
     
     static reject(arg) {
-        return new RemoteSwitch.reject(arg);
+        const ret = new RemoteSwitch();
+        ret.reject(arg);
+        return ret;
     }
 }

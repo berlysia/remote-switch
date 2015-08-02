@@ -23,7 +23,7 @@ rs
 .then(log);
 // no output
 
-rs.fire(); // alias of rs.resolve();
+rs.fire(); // wrapped rs.resolve(), method chainable
 // 123
 // 456
 
